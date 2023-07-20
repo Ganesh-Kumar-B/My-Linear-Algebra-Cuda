@@ -9,7 +9,7 @@ all: build
 .PHONY: build
 build:
 	$(NVCC) $(NVFLAGS) -c src/Matrix/kernels.cu
-	$(CXX) $(CXXFLAGS) -c -I/usr/local/cuda-5.5/include src/main.cpp
+	$(CXX) $(CXXFLAGS) -c -I/opt/ohpc/pub/apps/cuda/cuda-11.4/include src/main.cpp
 	$(CXX) $(CXXFLAGS) -o main main.o kernels.o -L/usr/local/cuda-5.5/lib64 -lcudart -lcurand -lcuda
 
 .PHONY: run

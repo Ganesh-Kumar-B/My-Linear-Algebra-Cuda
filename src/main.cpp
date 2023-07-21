@@ -1,9 +1,24 @@
 #include "Matrix/matrix.hpp"
+#include<chrono>
 
 int main() {
-	Matrix<float> A = Matrix<float>(10, 10, -0.25f, 0.25f);
+	Matrix<float> A = Matrix<float>(10000, 10000,0.25,0.30);
+	Matrix<float> B = Matrix<float>(10000,10000,0.25,0.30);
+	Matrix<float> C = Matrix<float>(10,10);
+
+	auto start = std::chrono::high_resolution_clock::now();
 	A.display();
-	A = A * 2.f;
-	A.display();
+	B.display();
+	C = A.add(B,true);
+	C.display();
+	auto end = std::chrono::high_resolution_clock::now();
+
+	std::chrono::duration<double> duration = end - start;
+    double elapsed_seconds = duration.count();
+
+    // Print the elapsed time
+    std::cout << "Elapsed time: " << elapsed_seconds << " seconds\n";
+
+
 	return 0;
 }
